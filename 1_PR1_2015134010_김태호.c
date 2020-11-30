@@ -1,14 +1,14 @@
 //////////////////////////////////////////////////////////////////////
-// PR1.¿⁄µø¬˜ √ﬂ¿˚ Ω√Ω∫≈€
+// PR1.ÏûêÎèôÏ∞® Ï∂îÏ†Å ÏãúÏä§ÌÖú
 
-// ¿€º∫¿⁄: 2015134010 ±Ë≈¬»£
+// ÏûëÏÑ±Ïûê: 2015134010 ÍπÄÌÉúÌò∏
 
-// ¿€º∫¿œ: 2019.12.04
+// ÏûëÏÑ±Ïùº: 2019.12.04
 
 /////////////////////////////////////////////////////////////////////
 #include "stm32f4xx.h"
 #include "GLCD.h"
-//#include "FRAM.h"
+#include "FRAM.h"
 
 #define SW0_PUSH        0xFE00  //PH8
 #define SW1_PUSH        0xFD00  //PH9
@@ -48,149 +48,149 @@ void ADC_IRQHandler(void)
   //sprintf(str,"%4d",ADC_Value);	// ADC result : 12bits (0~4095)
   //LCD_DisplayText(0,6,str);
   Voltage = ADC_Value * 33 / 1023;   // 33 : 1023 =  Volatge : ADC_Value 
-  V_trans = (Voltage-0)*(380-50)/(33)+50;  // √÷º“∞™ 5, √÷¥Î∞™ 38¿∏∑Œ ∫Ø»Ø«œ¥¬ «‘ºˆ (Map«‘ºˆ)
+  V_trans = (Voltage-0)*(380-50)/(33)+50;  // ÏµúÏÜåÍ∞í 5, ÏµúÎåÄÍ∞í 38ÏúºÎ°ú Î≥ÄÌôòÌïòÎäî Ìï®Ïàò (MapÌï®Ïàò)
   
-  if(Flag== 0x4D) // [æ∆Ω∫≈∞ƒ⁄µÂ] «√∑°±◊∞° 'S'∂Û∏È?
+  if(Flag== 0x4D) // [ÏïÑÏä§ÌÇ§ÏΩîÎìú] ÌîåÎûòÍ∑∏Í∞Ä 'S'ÎùºÎ©¥?
   {
-    LCD_DisplayChar(1,17,V_trans/100 + 0x30);// m¿« 10¿«¿⁄∏Æ «•Ω√
-    LCD_DisplayChar(1,18,V_trans%100/10 + 0x30); // m¿« 1¿« ¿⁄∏Æ «•Ω√
-    LCD_SetPenColor(RGB_YELLOW); // ≥Î∂ıªˆ
-    LCD_SetBrushColor(RGB_YELLOW); // ≥Î∂ıªˆ
-    LCD_DrawFillRect(13,20,120,12); // ≥Î∂ıªˆ ªÁ∞¢«¸(¡ˆøÏ±‚)
-    LCD_SetPenColor(RGB_RED);// ª°∞£ªˆ ∆Ê º≥¡§
-    LCD_SetBrushColor(RGB_RED);// ª°∞£ ∫Í∑ØΩ¨ ª˝º∫ 
-    LCD_DrawFillRect(13,20,10+Voltage*3.3,12); //ª°∞£ ªÁ∞¢«¸ ª˝º∫
-    if(V_trans>=50 && V_trans<90) // 5m ~ 8m¿Ã∏È?
+    LCD_DisplayChar(1,17,V_trans/100 + 0x30);// mÏùò 10ÏùòÏûêÎ¶¨ ÌëúÏãú
+    LCD_DisplayChar(1,18,V_trans%100/10 + 0x30); // mÏùò 1Ïùò ÏûêÎ¶¨ ÌëúÏãú
+    LCD_SetPenColor(RGB_YELLOW); // ÎÖ∏ÎûÄÏÉâ
+    LCD_SetBrushColor(RGB_YELLOW); // ÎÖ∏ÎûÄÏÉâ
+    LCD_DrawFillRect(13,20,120,12); // ÎÖ∏ÎûÄÏÉâ ÏÇ¨Í∞ÅÌòï(ÏßÄÏö∞Í∏∞)
+    LCD_SetPenColor(RGB_RED);// Îπ®Í∞ÑÏÉâ Ìéú ÏÑ§Ï†ï
+    LCD_SetBrushColor(RGB_RED);// Îπ®Í∞Ñ Î∏åÎü¨Ïâ¨ ÏÉùÏÑ± 
+    LCD_DrawFillRect(13,20,10+Voltage*3.3,12); //Îπ®Í∞Ñ ÏÇ¨Í∞ÅÌòï ÏÉùÏÑ±
+    if(V_trans>=50 && V_trans<90) // 5m ~ 8mÏù¥Î©¥?
     {
       TIM2->CCR4	= 5000;		// CCR4 value  5000 ->10%
-      LCD_DisplayChar(2,6,0x30+1);    // DR 10% «•Ω√
+      LCD_DisplayChar(2,6,0x30+1);    // DR 10% ÌëúÏãú
     }
-    else if(V_trans>=90 && V_trans<130) // 9m ~ 12m¿Ã∏È?
+    else if(V_trans>=90 && V_trans<130) // 9m ~ 12mÏù¥Î©¥?
     {
       TIM2->CCR4	= 10000;		// CCR4 value 10000 ->20%
-      LCD_DisplayChar(2,6,0x30+2);    // DR 20% «•Ω√
+      LCD_DisplayChar(2,6,0x30+2);    // DR 20% ÌëúÏãú
     }
-    else if(V_trans>=130 && V_trans<170)// 13m ~ 16m¿Ã∏È?
+    else if(V_trans>=130 && V_trans<170)// 13m ~ 16mÏù¥Î©¥?
     {
       TIM2->CCR4	= 15000;		// CCR4 value 15000 ->30%
-      LCD_DisplayChar(2,6,0x30+3);    // DR 30% «•Ω√
+      LCD_DisplayChar(2,6,0x30+3);    // DR 30% ÌëúÏãú
     }
-    else if(V_trans>=170 && V_trans<210)// 17m ~ 20m¿Ã∏È?
+    else if(V_trans>=170 && V_trans<210)// 17m ~ 20mÏù¥Î©¥?
     {
       TIM2->CCR4	= 20000;		// CCR4 value 20000 ->40%
-      LCD_DisplayChar(2,6,0x30+4);    // DR 40% «•Ω√
+      LCD_DisplayChar(2,6,0x30+4);    // DR 40% ÌëúÏãú
     }
-    else if(V_trans>=210 && V_trans<250) // 21m ~ 24m¿Ã∏È?
+    else if(V_trans>=210 && V_trans<250) // 21m ~ 24mÏù¥Î©¥?
     {
       TIM2->CCR4	= 25000;		// CCR4 value 25000 ->50%
-      LCD_DisplayChar(2,6,0x30+5);    // DR 50% «•Ω√
+      LCD_DisplayChar(2,6,0x30+5);    // DR 50% ÌëúÏãú
     }
-    else if(V_trans>=250 && V_trans<290) // 25m ~ 28m¿Ã∏È?
+    else if(V_trans>=250 && V_trans<290) // 25m ~ 28mÏù¥Î©¥?
     {
       TIM2->CCR4	= 30000;		// CCR4 value 30000 ->60%
-      LCD_DisplayChar(2,6,0x30+6);    // DR 60% «•Ω√
+      LCD_DisplayChar(2,6,0x30+6);    // DR 60% ÌëúÏãú
     }
-    else if(V_trans>=290 && V_trans<330) // 29m ~ 32m¿Ã∏È?
+    else if(V_trans>=290 && V_trans<330) // 29m ~ 32mÏù¥Î©¥?
     {
       TIM2->CCR4	= 35000;		// CCR4 value 35000 ->70%
-      LCD_DisplayChar(2,6,0x30+7);    // DR 70% «•Ω√
+      LCD_DisplayChar(2,6,0x30+7);    // DR 70% ÌëúÏãú
     }
-    else if(V_trans>=330 && V_trans<370) // 33m ~ 36m¿Ã∏È?
+    else if(V_trans>=330 && V_trans<370) // 33m ~ 36mÏù¥Î©¥?
     {
       TIM2->CCR4	= 40000;		// CCR4 value 40000 ->80%
-      LCD_DisplayChar(2,6,0x30+8);    // DR 80% «•Ω√
+      LCD_DisplayChar(2,6,0x30+8);    // DR 80% ÌëúÏãú
     }
-    else if(V_trans>=370 && V_trans<390)// 37m ~ 38m¿Ã∏È?
+    else if(V_trans>=370 && V_trans<390)// 37m ~ 38mÏù¥Î©¥?
     {
       TIM2->CCR4	= 45000;		// CCR4 value 45000 ->90%
-      LCD_DisplayChar(2,6,0x30+9);    // DR 90% «•Ω√
+      LCD_DisplayChar(2,6,0x30+9);    // DR 90% ÌëúÏãú
     }
-    Fram_Write(1126,Flag); //FRAM 1126π¯¡ˆø° Flag∞™(M) ¿˙¿Â
-    LCD_DisplayChar(2,18,Fram_Read(1126)); //FRAM 1126π¯¡ˆ ¿˙¿Âµ» data(1byte) ¿–æÓø¬¥Ÿ.
-    SerialSendChar(V_trans/100 + 0x30); // USART 1 10¿«¿⁄∏Æ ¿¸º€
-    SerialSendChar(V_trans%100/10 + 0x30); // USART 1 1¿«¿⁄∏Æ ¿¸º€
-    SerialSendChar('m');// USART 1 'm' ¿¸º€
-    SerialSendChar(' '); // // USART 1 ∂ÁæÓæ≤±‚ ¿¸º€
+    Fram_Write(1126,Flag); //FRAM 1126Î≤àÏßÄÏóê FlagÍ∞í(M) Ï†ÄÏû•
+    LCD_DisplayChar(2,18,Fram_Read(1126)); //FRAM 1126Î≤àÏßÄ Ï†ÄÏû•Îêú data(1byte) ÏùΩÏñ¥Ïò®Îã§.
+    SerialSendChar(V_trans/100 + 0x30); // USART 1 10ÏùòÏûêÎ¶¨ Ï†ÑÏÜ°
+    SerialSendChar(V_trans%100/10 + 0x30); // USART 1 1ÏùòÏûêÎ¶¨ Ï†ÑÏÜ°
+    SerialSendChar('m');// USART 1 'm' Ï†ÑÏÜ°
+    SerialSendChar(' '); // // USART 1 ÎùÑÏñ¥Ïì∞Í∏∞ Ï†ÑÏÜ°
   }
-  else if(Flag==0x53) // [æ∆Ω∫≈∞ƒ⁄µÂ] «√∑°±◊∞° 'S'∂Û∏È?
+  else if(Flag==0x53) // [ÏïÑÏä§ÌÇ§ÏΩîÎìú] ÌîåÎûòÍ∑∏Í∞Ä 'S'ÎùºÎ©¥?
   {
-    V_trans=0; // ∫Ø»Ø∞™ 0 «•±‚
+    V_trans=0; // Î≥ÄÌôòÍ∞í 0 ÌëúÍ∏∞
     TIM2->CCR4	= 0;		// CCR4 value
-    Fram_Write(1126,Flag); //FRAM 1126π¯¡ˆø° Flag∞™(S) ¿˙¿Â
-    LCD_SetPenColor(RGB_YELLOW); // ≥Î∂ıªˆ
-    LCD_SetBrushColor(RGB_YELLOW); // ≥Î∂ıªˆ
-    LCD_DrawFillRect(13,20,120,12); // ≥Î∂ıªˆ ªÁ∞¢«¸(¡ˆøÏ±‚)
-    LCD_DisplayChar(2,6,0x30);    // DR 00% «•Ω√
-    LCD_DisplayText(1,17,"00"); // 0m «•Ω√
-    LCD_DisplayChar(2,18,Fram_Read(1126)); //FRAM 1126π¯¡ˆ ¿˙¿Âµ» data(1byte) ¿–æÓø¬¥Ÿ.
-    SerialSendString("00m");// USART1 00m º€Ω≈
-    SerialSendChar(' ');// USART1 ∂ÁæÓæ≤±‚ º€Ω≈
+    Fram_Write(1126,Flag); //FRAM 1126Î≤àÏßÄÏóê FlagÍ∞í(S) Ï†ÄÏû•
+    LCD_SetPenColor(RGB_YELLOW); // ÎÖ∏ÎûÄÏÉâ
+    LCD_SetBrushColor(RGB_YELLOW); // ÎÖ∏ÎûÄÏÉâ
+    LCD_DrawFillRect(13,20,120,12); // ÎÖ∏ÎûÄÏÉâ ÏÇ¨Í∞ÅÌòï(ÏßÄÏö∞Í∏∞)
+    LCD_DisplayChar(2,6,0x30);    // DR 00% ÌëúÏãú
+    LCD_DisplayText(1,17,"00"); // 0m ÌëúÏãú
+    LCD_DisplayChar(2,18,Fram_Read(1126)); //FRAM 1126Î≤àÏßÄ Ï†ÄÏû•Îêú data(1byte) ÏùΩÏñ¥Ïò®Îã§.
+    SerialSendString("00m");// USART1 00m ÏÜ°Ïã†
+    SerialSendChar(' ');// USART1 ÎùÑÏñ¥Ïì∞Í∏∞ ÏÜ°Ïã†
   }
 }
 int main(void)
 {
-  LCD_Init();	// LCD ±∏µø «‘ºˆ
-  DelayMS(10);	// LCD±∏µø µÙ∑π¿Ã
-  DisplayTitle();	//LCD √ ±‚»≠∏È±∏µø «‘ºˆ
+  LCD_Init();	// LCD Íµ¨Îèô Ìï®Ïàò
+  DelayMS(10);	// LCDÍµ¨Îèô ÎîúÎ†àÏù¥
+  DisplayTitle();	//LCD Ï¥àÍ∏∞ÌôîÎ©¥Íµ¨Îèô Ìï®Ïàò
   
-  _GPIO_Init();//GPIO º≥¡§
-  _ADC_Init();//ADC º≥¡§
-  _EXTI_Init();// ¿Œ≈Õ∑¥∆Æ º≥¡§
-  TIMER1_Init(); // ≈∏¿Ã∏” 1π¯(CC∏µÂ) º≥¡§
-  TIMER2_PWM_Init(); //≈∏¿Ã∏” 2π¯(PWM) º≥¡§
-  USART1_Init();// USART 1π¯ º≥¡§
-  Fram_Init();        // FRAM √ ±‚»≠ 
-  Fram_Status_Config();  // FRAM ªÛ≈¬ º≥¡§
-  Flag=Fram_Read(1126);// √ ±‚ Flag¥¬ Fram 1126π¯¡ˆø° ¿˙¿Â
-  LCD_DisplayChar(2,18,Fram_Read(1126)); //FRAM 1126π¯¡ˆ ¿˙¿Âµ» data(1byte) ¿–æÓø¬¥Ÿ.
+  _GPIO_Init();//GPIO ÏÑ§Ï†ï
+  _ADC_Init();//ADC ÏÑ§Ï†ï
+  _EXTI_Init();// Ïù∏ÌÑ∞ÎüΩÌä∏ ÏÑ§Ï†ï
+  TIMER1_Init(); // ÌÉÄÏù¥Î®∏ 1Î≤à(CCÎ™®Îìú) ÏÑ§Ï†ï
+  TIMER2_PWM_Init(); //ÌÉÄÏù¥Î®∏ 2Î≤à(PWM) ÏÑ§Ï†ï
+  USART1_Init();// USART 1Î≤à ÏÑ§Ï†ï
+  Fram_Init();        // FRAM Ï¥àÍ∏∞Ìôî 
+  Fram_Status_Config();  // FRAM ÏÉÅÌÉú ÏÑ§Ï†ï
+  Flag=Fram_Read(1126);// Ï¥àÍ∏∞ FlagÎäî Fram 1126Î≤àÏßÄÏóê Ï†ÄÏû•
+  LCD_DisplayChar(2,18,Fram_Read(1126)); //FRAM 1126Î≤àÏßÄ Ï†ÄÏû•Îêú data(1byte) ÏùΩÏñ¥Ïò®Îã§.
   while(1)
   {
-    switch(KEY_Scan()) // ≈∞Ω∫ƒµ º≥¡§
+    switch(KEY_Scan()) // ÌÇ§Ïä§Ï∫î ÏÑ§Ï†ï
     {
-    case 0xFE00 :  //SW0π¯¿Ã ¥≠∏Æ∏È?
-      Flag=0x4D; // Flagø° 'M'¿˙¿Â
-      Fram_Write(1126,Flag);//Fram 1126π¯¡ˆø° Flag¿˙¿Â
-      LCD_DisplayChar(2,18,Fram_Read(1126)); //FRAM 1126π¯¡ˆ ¿˙¿Âµ» data(1byte) ¿–æÓø¬¥Ÿ.
-      Count=0;// Count ∞™ 0¿∏∑Œ ¿˙¿Â
+    case 0xFE00 :  //SW0Î≤àÏù¥ ÎàåÎ¶¨Î©¥?
+      Flag=0x4D; // FlagÏóê 'M'Ï†ÄÏû•
+      Fram_Write(1126,Flag);//Fram 1126Î≤àÏßÄÏóê FlagÏ†ÄÏû•
+      LCD_DisplayChar(2,18,Fram_Read(1126)); //FRAM 1126Î≤àÏßÄ Ï†ÄÏû•Îêú data(1byte) ÏùΩÏñ¥Ïò®Îã§.
+      Count=0;// Count Í∞í 0ÏúºÎ°ú Ï†ÄÏû•
       break;
     }
-    if(SW7_Flag) // [¿Œ≈Õ∑¥∆Æ] SW7π¯ ¥≠∏Æ∏È?
+    if(SW7_Flag) // [Ïù∏ÌÑ∞ÎüΩÌä∏] SW7Î≤à ÎàåÎ¶¨Î©¥?
     {
-      Count=1; //Count∞™ 1∑Œ¿˙¿Â
-      Flag=0x53; // Flagø° 'S'¿˙¿Â
-      Fram_Write(1126,Flag);//FRAM 1126π¯¡ˆ ¿˙¿Âµ» data(1byte) ¿–æÓø¬¥Ÿ.
-      SW7_Flag=0; // SW7_Flag∞™ 0¿∏∑Œ º≥¡§ («—π¯∏∏ ¥≠∏Æ∞‘ º≥¡§)
+      Count=1; //CountÍ∞í 1Î°úÏ†ÄÏû•
+      Flag=0x53; // FlagÏóê 'S'Ï†ÄÏû•
+      Fram_Write(1126,Flag);//FRAM 1126Î≤àÏßÄ Ï†ÄÏû•Îêú data(1byte) ÏùΩÏñ¥Ïò®Îã§.
+      SW7_Flag=0; // SW7_FlagÍ∞í 0ÏúºÎ°ú ÏÑ§Ï†ï (ÌïúÎ≤àÎßå ÎàåÎ¶¨Í≤å ÏÑ§Ï†ï)
     }
   }
 }
-void _EXTI_Init(void) //¿Œ≈Õ∑¥∆Æ º≥¡§
+void _EXTI_Init(void) //Ïù∏ÌÑ∞ÎüΩÌä∏ ÏÑ§Ï†ï
 {
   RCC->AHB1ENR 	|= 0x0080;	// RCC_AHB1ENR GPIOH Enable
   RCC->APB2ENR 	|= 0x4000;	// Enable System Configuration Controller Clock
   
   GPIOH->MODER 	&= 0x00FF;	// GPIOH PIN8~PIN15 Input mode (reset state)				 
   
-  SYSCFG->EXTICR[3] |= 0x7000; 	// EXTI15ø° ¥Î«— º“Ω∫ ¿‘∑¬¿∫ GPIOH∑Œ º≥¡§ (EXTICR3) (reset value: 0x0000)	
+  SYSCFG->EXTICR[3] |= 0x7000; 	// EXTI15Ïóê ÎåÄÌïú ÏÜåÏä§ ÏûÖÎ†•ÏùÄ GPIOHÎ°ú ÏÑ§Ï†ï (EXTICR3) (reset value: 0x0000)	
   
   EXTI->FTSR |= 0x8000;		// Falling Trigger Enable (EXTI15:PH15)
-  EXTI->IMR  |= 0x8000;  	// EXTI15 ¿Œ≈Õ∑¥∆Æ mask (Interrupt Enable)
-  NVIC->ISER[1] |= ( 1 << 8 );   // Enable Interrupt EXTI15 Vector table Position ¬¸¡∂
+  EXTI->IMR  |= 0x8000;  	// EXTI15 Ïù∏ÌÑ∞ÎüΩÌä∏ mask (Interrupt Enable)
+  NVIC->ISER[1] |= ( 1 << 8 );   // Enable Interrupt EXTI15 Vector table Position Ï∞∏Ï°∞
 }
 
-void EXTI15_10_IRQHandler(void)		// EXTI 15~10 ¿Œ≈Õ∑¥∆Æ «⁄µÈ∑Ø
+void EXTI15_10_IRQHandler(void)		// EXTI 15~10 Ïù∏ÌÑ∞ÎüΩÌä∏ Ìï∏Îì§Îü¨
 {
   if(EXTI->PR & 0x8000) 	// EXTI15 Interrupt Pending?
   {
     EXTI->PR |= 0x8000; 	// Pending bit Clear
-    SW7_Flag=1; // SW7¿Ã ¥≠∏∞ ªÛ»≤¿Ã∏È 1∑Œ ¿˙¿Â
+    SW7_Flag=1; // SW7Ïù¥ ÎàåÎ¶∞ ÏÉÅÌô©Ïù¥Î©¥ 1Î°ú Ï†ÄÏû•
   }
 }
 void _ADC_Init(void)
 {	// ADC2: PA1(pin 41)
-  RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;	// (1<<0) ENABLE GPIOA CLK (stm32f4xx.h ¬¸¡∂)
+  RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;	// (1<<0) ENABLE GPIOA CLK (stm32f4xx.h Ï∞∏Ï°∞)
   GPIOA->MODER |= (3<<2*1);		// CONFIG GPIOA PIN1(PA1) TO ANALOG IN MODE
   
-  RCC->APB2ENR |= RCC_APB2ENR_ADC2EN;	//  ENABLE ADC2 CLK (stm32f4xx.h ¬¸¡∂)
+  RCC->APB2ENR |= RCC_APB2ENR_ADC2EN;	//  ENABLE ADC2 CLK (stm32f4xx.h Ï∞∏Ï°∞)
   
   ADC->CCR &= ~(0X1F<<0);		// MULTI[4:0]: ADC_Mode_Independent
   ADC->CCR |=  (1<<16); 		// 0x00010000 ADCPRE:ADC_Prescaler_Div4 (ADC MAX Clock 36MHz, 84Mhz(APB2)/4 = 21MHz)
@@ -201,7 +201,7 @@ void _ADC_Init(void)
   
   ADC2->CR2 &= ~(1<<1);		// CONT=0: ADC_Continuous ConvMode Disable
   
-  ADC2->CR2 |=  (2<<28);		// EXTEN[1:0]: ADC_ExternalTrigConvEdge_Enable  (Falling Edge) // ≈∏¿Ã∏”∏¶ ªÁøÎ«ÿ∫∏∞Ì ΩÕ¥Ÿ.
+  ADC2->CR2 |=  (2<<28);		// EXTEN[1:0]: ADC_ExternalTrigConvEdge_Enable  (Falling Edge) // ÌÉÄÏù¥Î®∏Î•º ÏÇ¨Ïö©Ìï¥Î≥¥Í≥† Ïã∂Îã§.
   ADC2->CR2 |= (2<<24);	        // Timer 1 CC3 Event Enable 
   
   ADC2->CR2 &= ~(1<<11);		// ALIGN=0: ADC_DataAlign_Right
@@ -221,12 +221,12 @@ void _ADC_Init(void)
 }
 void TIMER1_Init(void)
 {
-  // TIM1_CH3 (PE13) : 300ms ¿Œ≈Õ∑¥∆Æ πﬂª˝
+  // TIM1_CH3 (PE13) : 300ms Ïù∏ÌÑ∞ÎüΩÌä∏ Î∞úÏÉù
   // Clock Enable : GPIOE & TIMER13
   RCC->AHB1ENR	|= (1<<4);	// GPIOE Enable
   RCC->APB2ENR	|= (1<<0);	// TIMER1 Enable 
   
-  // PE13¿ª √‚∑¬º≥¡§«œ∞Ì Alternate function(TIM1_CH3)¿∏∑Œ ªÁøÎ º±æ 
+  // PE13ÏùÑ Ï∂úÎ†•ÏÑ§Ï†ïÌïòÍ≥† Alternate function(TIM1_CH3)ÏúºÎ°ú ÏÇ¨Ïö© ÏÑ†Ïñ∏ 
   GPIOE->MODER 	|= (2<<2*13);	// PE13 Output Alternate function mode					
   GPIOE->OSPEEDR 	|= (3<<2*13);	// PE13 Output speed (100MHz High speed)
   GPIOE->OTYPER	&= ~(1<<13);	// PE13 Output type push-pull (reset state)
@@ -259,8 +259,8 @@ void TIMER1_Init(void)
   // Disable Tim1 Update interrupt
   // Define the corresponding pin by 'Output' 
   TIM1->CCER |= (1<<8);	// CC3E=1: CC3 channel Output Enable
-  // OC3(TIM1_CH3) Active: «ÿ¥Á«…¿ª ≈Î«ÿ Ω≈»£√‚∑¬
-  TIM1->CCER &= ~(1<<9);	// CC3P=0: CC3 channel Output Polarity (OCPolarity_High : OC3¿∏∑Œ π›¿¸æ¯¿Ã √‚∑¬)  
+  // OC3(TIM1_CH3) Active: Ìï¥ÎãπÌïÄÏùÑ ÌÜµÌï¥ Ïã†Ìò∏Ï∂úÎ†•
+  TIM1->CCER &= ~(1<<9);	// CC3P=0: CC3 channel Output Polarity (OCPolarity_High : OC3ÏúºÎ°ú Î∞òÏ†ÑÏóÜÏù¥ Ï∂úÎ†•)  
   
   // 'Mode' Selection : Output mode, toggle  
   TIM1->CCMR2 &= ~(3<<0); // CC3S(CC3 channel) = '0b00' : Output 
@@ -281,7 +281,7 @@ void TIMER2_PWM_Init(void)
   RCC->AHB1ENR	|= (1<<1);	// GPIOB CLOCK Enable
   RCC->APB1ENR 	|= (1<<0);	// TIMER2 CLOCK Enable 
   
-  // PB11¿ª √‚∑¬º≥¡§«œ∞Ì Alternate function(TIM2_CH4)¿∏∑Œ ªÁøÎ º±æ : PWM √‚∑¬
+  // PB11ÏùÑ Ï∂úÎ†•ÏÑ§Ï†ïÌïòÍ≥† Alternate function(TIM2_CH4)ÏúºÎ°ú ÏÇ¨Ïö© ÏÑ†Ïñ∏ : PWM Ï∂úÎ†•
   GPIOB->MODER 	|= (2<<2*11);	//  PB11 Output Alternate function mode					
   GPIOB->OSPEEDR 	|= (3<<2*11);	// PB11 Output speed (100MHz High speed)
   GPIOB->OTYPER	&= ~(1<<11);	// PB11 Output type push-pull (reset state)
@@ -312,7 +312,7 @@ void TIMER2_PWM_Init(void)
   // Define the corresponding pin by 'Output'  
   // CCER(Capture/Compare Enable Register) : Enable "Channel 4" 
   TIM2->CCER	|= (1<<12);	// CC4E=1: OC4(TIM2_CH4) Active(Capture/Compare 4 output enable
-  TIM2->CCER	&= ~(1<<13);	// CC4P=0: CC4 Output Polarity (OCPolarity_High : OC4¿∏∑Œ π›¿¸æ¯¿Ã √‚∑¬)
+  TIM2->CCER	&= ~(1<<13);	// CC4P=0: CC4 Output Polarity (OCPolarity_High : OC4ÏúºÎ°ú Î∞òÏ†ÑÏóÜÏù¥ Ï∂úÎ†•)
   
   // Duty Ratio 
   TIM2->CCR4	= 500;		// CCR4 value
@@ -353,39 +353,39 @@ void USART1_Init(void)
   USART1->CR3	= 0x0000;	// No HardwareFlowControl, No DMA
   
   USART1->CR1 	|= (1<<5);	// 0x0020, RXNE interrupt Enable
-  NVIC->ISER[1]	|= (1<<(37-32));// Enable Interrupt USART1 (NVIC 37π¯)
+  NVIC->ISER[1]	|= (1<<(37-32));// Enable Interrupt USART1 (NVIC 37Î≤à)
   USART1->CR1 	|= (1<<13);	//  0x2000, USART1 Enable
 }
 void USART1_IRQHandler(void)	
 {       
   if ( (USART1->SR & USART_SR_RXNE) ) 	// USART_SR_RXNE=(1<<5) 
   {
-    ch = (uint16_t)(USART1->DR & (uint16_t)0x01FF);	// ºˆΩ≈µ» πÆ¿⁄ ¿˙¿Â
-    if(ch == 'M') // ¿˙¿Âµ» πÆ¿⁄∞° M¿Ã∂Û∏È?
+    ch = (uint16_t)(USART1->DR & (uint16_t)0x01FF);	// ÏàòÏã†Îêú Î¨∏Ïûê Ï†ÄÏû•
+    if(ch == 'M') // Ï†ÄÏû•Îêú Î¨∏ÏûêÍ∞Ä MÏù¥ÎùºÎ©¥?
     {
-      Flag=0x4D; // Flag¥¬ M¿∏∑Œ ¿¸º€
+      Flag=0x4D; // FlagÎäî MÏúºÎ°ú Ï†ÑÏÜ°
     }
-    else if(ch=='S')// ¿˙¿Âµ» πÆ¿⁄∞° S∂Û∏È?
+    else if(ch=='S')// Ï†ÄÏû•Îêú Î¨∏ÏûêÍ∞Ä SÎùºÎ©¥?
     {
-      Flag=0x53; // Flag¥¬ S¿∏∑Œ ¿¸º€
+      Flag=0x53; // FlagÎäî SÏúºÎ°ú Ï†ÑÏÜ°
     }
   } 
-  // DR ¿ª ¿–¿∏∏È SR.RXNE bit(flag bit)¥¬ clear µ»¥Ÿ. ¡Ô clear «“ « ø‰æ¯¿Ω 
+  // DR ÏùÑ ÏùΩÏúºÎ©¥ SR.RXNE bit(flag bit)Îäî clear ÎêúÎã§. Ï¶â clear Ìï† ÌïÑÏöîÏóÜÏùå 
 }
-void SerialSendChar(uint8_t Ch) // 1πÆ¿⁄ ∫∏≥ª±‚ «‘ºˆ
+void SerialSendChar(uint8_t Ch) // 1Î¨∏Ïûê Î≥¥ÎÇ¥Í∏∞ Ìï®Ïàò
 {
-  while((USART1->SR & USART_SR_TXE) == RESET); // USART_SR_TXE=(1<<7), º€Ω≈ ∞°¥…«— ªÛ≈¬±Ó¡ˆ ¥Î±‚
+  while((USART1->SR & USART_SR_TXE) == RESET); // USART_SR_TXE=(1<<7), ÏÜ°Ïã† Í∞ÄÎä•Ìïú ÏÉÅÌÉúÍπåÏßÄ ÎåÄÍ∏∞
   
-  USART1->DR = (Ch & 0x01FF);	// ¿¸º€ (√÷¥Î 9bit ¿Ãπ«∑Œ 0x01FF∞˙ masking)
+  USART1->DR = (Ch & 0x01FF);	// Ï†ÑÏÜ° (ÏµúÎåÄ 9bit Ïù¥ÎØÄÎ°ú 0x01FFÍ≥º masking)
 }
 
 
-void SerialSendString(char *str) // ø©∑ØπÆ¿⁄ ∫∏≥ª±‚ «‘ºˆ
+void SerialSendString(char *str) // Ïó¨Îü¨Î¨∏Ïûê Î≥¥ÎÇ¥Í∏∞ Ìï®Ïàò
 {
-  while (*str != '\0') // ¡æ∞·πÆ¿⁄∞° ≥™ø¿±‚ ¿¸±Ó¡ˆ ±∏µø, ¡æ∞·πÆ¿⁄∞° ≥™ø¬»ƒø°µµ ±∏µøΩ√ ∏ﬁ∏∏Æ ø¿∑˘ πﬂª˝∞°¥…º∫ ¿÷¿Ω.
+  while (*str != '\0') // Ï¢ÖÍ≤∞Î¨∏ÏûêÍ∞Ä ÎÇòÏò§Í∏∞ Ï†ÑÍπåÏßÄ Íµ¨Îèô, Ï¢ÖÍ≤∞Î¨∏ÏûêÍ∞Ä ÎÇòÏò®ÌõÑÏóêÎèÑ Íµ¨ÎèôÏãú Î©îÎ™®Î¶¨ Ïò§Î•ò Î∞úÏÉùÍ∞ÄÎä•ÏÑ± ÏûàÏùå.
   {
-    SerialSendChar(*str);	// ∆˜¿Œ≈Õ∞° ∞°∏£≈∞¥¬ ∞˜¿« µ•¿Ã≈Õ∏¶ º€Ω≈
-    str++; 			// ∆˜¿Œ≈Õ ºˆƒ° ¡ı∞°
+    SerialSendChar(*str);	// Ìè¨Ïù∏ÌÑ∞Í∞Ä Í∞ÄÎ•¥ÌÇ§Îäî Í≥≥Ïùò Îç∞Ïù¥ÌÑ∞Î•º ÏÜ°Ïã†
+    str++; 			// Ìè¨Ïù∏ÌÑ∞ ÏàòÏπò Ï¶ùÍ∞Ä
   }
 }
 
@@ -427,24 +427,24 @@ void USART_BRR_Configuration(uint32_t USART_BaudRate)
 
 void _GPIO_Init(void)
 {
-  // LED (GPIO G) º≥¡§
+  // LED (GPIO G) ÏÑ§Ï†ï
   RCC->AHB1ENR	|=  0x00000040;	// RCC_AHB1ENR : GPIOG(bit#6) Enable							
   GPIOG->MODER 	|=  0x00005555;	// GPIOG 0~7 : Output mode (0b01)						
   GPIOG->OTYPER	&= ~0x00FF;	// GPIOG 0~7 : Push-pull  (GP8~15:reset state)	
   GPIOG->OSPEEDR 	|=  0x00005555;	// GPIOG 0~7 : Output speed 25MHZ Medium speed 
   
-  // SW (GPIO H) º≥¡§ 
+  // SW (GPIO H) ÏÑ§Ï†ï 
   RCC->AHB1ENR    |=  0x00000080;	// RCC_AHB1ENR : GPIOH(bit#7) Enable							
   GPIOH->MODER 	&= ~0xFFFF0000;	// GPIOH 8~15 : Input mode (reset state)				
   GPIOH->PUPDR 	&= ~0xFFFF0000;	// GPIOH 8~15 : Floating input (No Pull-up, pull-down) :reset state
   
-  // Buzzer (GPIO F) º≥¡§ 
+  // Buzzer (GPIO F) ÏÑ§Ï†ï 
   RCC->AHB1ENR	|=  0x00000020; // RCC_AHB1ENR : GPIOF(bit#5) Enable							
   GPIOF->MODER 	|=  0x00040000;	// GPIOF 9 : Output mode (0b01)						
   GPIOF->OTYPER 	&= ~0x0200;	// GPIOF 9 : Push-pull  	
   GPIOF->OSPEEDR 	|=  0x00040000;	// GPIOF 9 : Output speed 25MHZ Medium speed 
   
-  //NAVI.SW(PORT I) º≥¡§
+  //NAVI.SW(PORT I) ÏÑ§Ï†ï
   RCC->AHB1ENR 	|= 0x00000100;	// RCC_AHB1ENR GPIOI Enable
   GPIOI->MODER 	= 0x00000000;	// GPIOI PIN8~PIN15 Input mode (reset state)
   GPIOI->PUPDR    = 0x00000000;	// GPIOI PIN8~PIN15 Floating input (No Pull-up, pull-down) (reset state)
@@ -472,14 +472,14 @@ void DelayUS(unsigned short wUS)
 void DisplayTitle(void)
 {
   LCD_Clear(RGB_YELLOW);
-  LCD_SetFont(&Gulim10);		//∆˘∆Æ 
-  LCD_SetBackColor(RGB_YELLOW);	//±€¿⁄πË∞Êªˆ
-  LCD_SetTextColor(RGB_BLACK);	//±€¿⁄ªˆ
-  LCD_DisplayText(0,0,"Tracking Car"); // ¡¶∏Ò √‚∑¬
-  LCD_DisplayText(1,0,"D:"); // D √‚∑¬
-  LCD_DisplayText(2,0,"S(DR):00%"); // S(DR)√‚∑¬
-  LCD_DisplayText(1,17,"00"); // 00 √‚∑¬
-  LCD_SetBackColor(RGB_YELLOW);	//±€¿⁄πË∞Êªˆ
+  LCD_SetFont(&Gulim10);		//Ìè∞Ìä∏ 
+  LCD_SetBackColor(RGB_YELLOW);	//Í∏ÄÏûêÎ∞∞Í≤ΩÏÉâ
+  LCD_SetTextColor(RGB_BLACK);	//Í∏ÄÏûêÏÉâ
+  LCD_DisplayText(0,0,"Tracking Car"); // Ï†úÎ™© Ï∂úÎ†•
+  LCD_DisplayText(1,0,"D:"); // D Ï∂úÎ†•
+  LCD_DisplayText(2,0,"S(DR):00%"); // S(DR)Ï∂úÎ†•
+  LCD_DisplayText(1,17,"00"); // 00 Ï∂úÎ†•
+  LCD_SetBackColor(RGB_YELLOW);	//Í∏ÄÏûêÎ∞∞Í≤ΩÏÉâ
 }
 
 uint8_t key_flag = 0;
