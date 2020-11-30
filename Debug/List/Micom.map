@@ -1,0 +1,446 @@
+###############################################################################
+#
+# IAR ELF Linker V8.32.3.193/W32 for ARM                  29/Nov/2020  20:06:57
+# Copyright 2007-2019 IAR Systems AB.
+#
+#    Output file  =  
+#        C:\Users\yse04\OneDrive\πŸ≈¡ »≠∏È\Micom\Debug\Exe\Micom.out
+#    Map file     =  
+#        C:\Users\yse04\OneDrive\πŸ≈¡ »≠∏È\Micom\Debug\List\Micom.map
+#    Command line =  
+#        -f C:\Users\yse04\AppData\Local\Temp\EW9FAA.tmp
+#        ("C:\Users\yse04\OneDrive\πŸ≈¡
+#        »≠∏È\Micom\Debug\Obj\3_PR2_2015134010_±Ë≈¬»£.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡ »≠∏È\Micom\Debug\Obj\FRAM.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡ »≠∏È\Micom\Debug\Obj\GLCD.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡ »≠∏È\Micom\Debug\Obj\GuiObject.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡
+#        »≠∏È\Micom\Debug\Obj\Gulim10_8x16_ASCII.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡
+#        »≠∏È\Micom\Debug\Obj\Gulim20_16x34_ASCII.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡
+#        »≠∏È\Micom\Debug\Obj\Gulim28_24x48_ASCII.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡
+#        »≠∏È\Micom\Debug\Obj\Gulim7_6x10_ASCII.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡
+#        »≠∏È\Micom\Debug\Obj\Gulim8_8x12_ASCII.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡ »≠∏È\Micom\Debug\Obj\ILI9163B.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡
+#        »≠∏È\Micom\Debug\Obj\startup_stm32f40_41xxx.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡
+#        »≠∏È\Micom\Debug\Obj\stm32f4xx_fsmc.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡
+#        »≠∏È\Micom\Debug\Obj\stm32f4xx_gpio.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡
+#        »≠∏È\Micom\Debug\Obj\stm32f4xx_rcc.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡
+#        »≠∏È\Micom\Debug\Obj\stm32f4xx_spi.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡
+#        »≠∏È\Micom\Debug\Obj\stm32f4xx_usart.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡
+#        »≠∏È\Micom\Debug\Obj\system_stm32f4xx.o"
+#        "C:\Users\yse04\OneDrive\πŸ≈¡ »≠∏È\Micom\Debug\Obj\Util.o"
+#        --no_out_extension -o "C:\Users\yse04\OneDrive\πŸ≈¡
+#        »≠∏È\Micom\Debug\Exe\Micom.out" --map
+#        "C:\Users\yse04\OneDrive\πŸ≈¡ »≠∏È\Micom\Debug\List\Micom.map"
+#        --config "C:\Users\yse04\OneDrive\πŸ≈¡
+#        »≠∏È\Micom\Libraries\stm32f4xx_flash.icf" --semihosting --entry
+#        __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because some modules are built with
+size limitations (and not runtime checking), and --advanced_heap
+was not specified.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x800'0000 { ro section .intvec };
+"P1":  place in [from 0x800'0000 to 0x81f'ffff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block HEAP with size = 512, alignment = 8 { };
+"P2":  place in [from 0x2000'0000 to 0x2002'ffff] {
+          rw, block CSTACK, block HEAP };
+initialize by copy { rw };
+
+  Section            Kind         Address    Size  Object
+  -------            ----         -------    ----  ------
+"A0":                                       0x188
+  .intvec            ro code   0x800'0000   0x188  startup_stm32f40_41xxx.o [1]
+                             - 0x800'0188   0x188
+
+"P1":                                      0x2ca4
+  .text              ro code   0x800'0188  0x1198  3_PR2_2015134010_±Ë≈¬»£.o [1]
+  .text              ro code   0x800'1320   0x248  GLCD.o [1]
+  .text              ro code   0x800'1568   0x288  FRAM.o [1]
+  .text              ro code   0x800'17f0   0x480  ILI9163B.o [1]
+  .text              ro code   0x800'1c70    0x40  stm32f4xx_rcc.o [1]
+  .text              ro code   0x800'1cb0    0xfc  stm32f4xx_gpio.o [1]
+  .text              ro code   0x800'1dac   0x148  stm32f4xx_fsmc.o [1]
+  .text              ro code   0x800'1ef4    0x3c  Util.o [1]
+  .rodata            const     0x800'1f30   0x600  Gulim8_8x12_ASCII.o [1]
+  .rodata            const     0x800'2530   0x500  Gulim7_6x10_ASCII.o [1]
+  .text              ro code   0x800'2a30   0x124  system_stm32f4xx.o [1]
+  .text              ro code   0x800'2b54    0x3a  zero_init3.o [4]
+  .text              ro code   0x800'2b8e    0x2c  copy_init3.o [4]
+  .text              ro code   0x800'2bbc    0x28  data_init.o [4]
+  Initializer bytes  const     0x800'2be4    0x28  <for P2-1>
+  .text              ro code   0x800'2c0c    0x22  fpinit_M.o [3]
+  .iar.init_table    const     0x800'2c30    0x24  - Linker created -
+  .text              ro code   0x800'2c54    0x1e  cmain.o [4]
+  .text              ro code   0x800'2c72     0x4  low_level_init.o [2]
+  .text              ro code   0x800'2c76     0x4  exit.o [2]
+  .text              ro code   0x800'2c7c     0xa  cexit.o [4]
+  .text              ro code   0x800'2c88    0x14  exit.o [5]
+  .text              ro code   0x800'2c9c    0x10  startup_stm32f40_41xxx.o [1]
+  .rodata            const     0x800'2cac     0xc  3_PR2_2015134010_±Ë≈¬»£.o [1]
+  .text              ro code   0x800'2cb8     0xc  cstartup_M.o [4]
+  .rodata            const     0x800'2cc4     0x8  3_PR2_2015134010_±Ë≈¬»£.o [1]
+  .text              ro code   0x800'2ccc     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2cd0     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2cd4     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2cd8     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2cdc     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2ce0     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2ce4     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2ce8     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2cec     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2cf0     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2cf4     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2cf8     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2cfc     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d00     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d04     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d08     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d0c     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d10     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d14     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d18     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d1c     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d20     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d24     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d28     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d2c     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d30     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d34     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d38     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d3c     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d40     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d44     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d48     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d4c     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d50     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d54     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d58     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d5c     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d60     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d64     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d68     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d6c     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d70     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d74     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d78     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d7c     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d80     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d84     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d88     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d8c     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d90     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d94     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d98     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2d9c     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2da0     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2da4     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2da8     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2dac     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2db0     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2db4     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2db8     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2dbc     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2dc0     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2dc4     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2dc8     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2dcc     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2dd0     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2dd4     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2dd8     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2ddc     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2de0     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2de4     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2de8     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2dec     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2df0     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2df4     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2df8     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2dfc     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2e00     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2e04     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2e08     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2e0c     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2e10     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2e14     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2e18     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2e1c     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2e20     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2e24     0x4  startup_stm32f40_41xxx.o [1]
+  .text              ro code   0x800'2e28     0x4  startup_stm32f40_41xxx.o [1]
+  .rodata            const     0x800'2e2c     0x0  zero_init3.o [4]
+  .rodata            const     0x800'2e2c     0x0  copy_init3.o [4]
+                             - 0x800'2e2c  0x2ca4
+
+"P2", part 1 of 3:                           0x28
+  P2-1                        0x2000'0000    0x28  <Init block>
+    .data            inited   0x2000'0000     0x4  3_PR2_2015134010_±Ë≈¬»£.o [1]
+    .data            inited   0x2000'0004     0x4  3_PR2_2015134010_±Ë≈¬»£.o [1]
+    .data            inited   0x2000'0008     0x4  3_PR2_2015134010_±Ë≈¬»£.o [1]
+    .data            inited   0x2000'000c     0x4  3_PR2_2015134010_±Ë≈¬»£.o [1]
+    .data            inited   0x2000'0010     0xc  Gulim7_6x10_ASCII.o [1]
+    .data            inited   0x2000'001c     0xc  Gulim8_8x12_ASCII.o [1]
+                            - 0x2000'0028    0x28
+
+"P2", part 2 of 3:                          0x1b8
+  .bss               zero     0x2000'0028   0x190  3_PR2_2015134010_±Ë≈¬»£.o [1]
+  .bss               zero     0x2000'01b8     0x4  3_PR2_2015134010_±Ë≈¬»£.o [1]
+  .bss               zero     0x2000'01bc     0x4  3_PR2_2015134010_±Ë≈¬»£.o [1]
+  .bss               zero     0x2000'01c0     0x4  3_PR2_2015134010_±Ë≈¬»£.o [1]
+  .bss               zero     0x2000'01c4     0x4  GLCD.o [1]
+  .bss               zero     0x2000'01c8     0x4  GLCD.o [1]
+  .bss               zero     0x2000'01cc     0x4  GLCD.o [1]
+  .bss               zero     0x2000'01d0     0x4  GLCD.o [1]
+  .bss               zero     0x2000'01d4     0x4  GLCD.o [1]
+  .bss               zero     0x2000'01d8     0x1  3_PR2_2015134010_±Ë≈¬»£.o [1]
+  .bss               zero     0x2000'01d9     0x1  3_PR2_2015134010_±Ë≈¬»£.o [1]
+  .bss               zero     0x2000'01da     0x1  3_PR2_2015134010_±Ë≈¬»£.o [1]
+  .bss               zero     0x2000'01db     0x1  3_PR2_2015134010_±Ë≈¬»£.o [1]
+  .bss               zero     0x2000'01dc     0x1  3_PR2_2015134010_±Ë≈¬»£.o [1]
+  .bss               zero     0x2000'01dd     0x1  3_PR2_2015134010_±Ë≈¬»£.o [1]
+  .bss               zero     0x2000'01de     0x1  3_PR2_2015134010_±Ë≈¬»£.o [1]
+                            - 0x2000'01df   0x1b7
+
+"P2", part 3 of 3:                          0x400
+  CSTACK                      0x2000'01e0   0x400  <Block>
+    CSTACK           uninit   0x2000'01e0   0x400  <Block tail>
+                            - 0x2000'05e0   0x400
+
+Unused ranges:
+
+         From           To       Size
+         ----           --       ----
+   0x800'2e2c   0x81f'ffff  0x1f'd1d4
+  0x2000'05e0  0x2002'ffff   0x2'fa20
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x1b7:
+          0x2000'0028  0x1b7
+
+Copy (__iar_copy_init3)
+    1 source range, total size 0x28:
+           0x800'2be4   0x28
+    1 destination range, total size 0x28:
+          0x2000'0000   0x28
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                    ro code  ro data  rw data
+    ------                    -------  -------  -------
+command line/config:
+    ---------------------------------------------------
+    Total:
+
+C:\Users\yse04\OneDrive\πŸ≈¡ »≠∏È\Micom\Debug\Obj: [1]
+    3_PR2_2015134010_±Ë≈¬»£.o      4 504       36      435
+    FRAM.o                        648
+    GLCD.o                        584                20
+    Gulim7_6x10_ASCII.o                  1 292       12
+    Gulim8_8x12_ASCII.o                  1 548       12
+    ILI9163B.o                  1 152
+    Util.o                         60
+    startup_stm32f40_41xxx.o      760
+    stm32f4xx_fsmc.o              328
+    stm32f4xx_gpio.o              252
+    stm32f4xx_rcc.o                64
+    system_stm32f4xx.o            292
+    ---------------------------------------------------
+    Total:                      8 644    2 876      479
+
+dl7M_tln.a: [2]
+    exit.o                          4
+    low_level_init.o                4
+    ---------------------------------------------------
+    Total:                          8
+
+m7M_tls.a: [3]
+    fpinit_M.o                     34
+    ---------------------------------------------------
+    Total:                         34
+
+rt7M_tl.a: [4]
+    cexit.o                        10
+    cmain.o                        30
+    copy_init3.o                   44
+    cstartup_M.o                   12
+    data_init.o                    40
+    zero_init3.o                   58
+    ---------------------------------------------------
+    Total:                        194
+
+shb_l.a: [5]
+    exit.o                         20
+    ---------------------------------------------------
+    Total:                         20
+
+    Gaps                            6        2
+    Linker created                          36    1 024
+-------------------------------------------------------
+    Grand Total:                8 906    2 914    1 503
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base    0x800'2c30          --   Gb  - Linker created -
+.iar.init_table$$Limit   0x800'2c54          --   Gb  - Linker created -
+?main                    0x800'2c55         Code  Gb  cmain.o [4]
+BEEP                     0x800'0797   0x1e  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+BlueplayerW             0x2000'01bc    0x4  Data  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+CSTACK$$Base            0x2000'01e0          --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'05e0          --   Gb  - Linker created -
+DelayMS                  0x800'12e5   0x20  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+DelayUS                  0x800'1305   0x1c  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+DisplayInitScreen        0x800'05f1  0x1a6  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+EXTI15_10_IRQHandler     0x800'05a9   0x48  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+EXTI9_5_IRQHandler       0x800'0577   0x32  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+FSMC_GPIO_Config         0x800'1835  0x112  Code  Gb  ILI9163B.o [1]
+FSMC_LCD_Init            0x800'1947   0x7a  Code  Gb  ILI9163B.o [1]
+FSMC_NORSRAMCmd          0x800'1eb7   0x2c  Code  Gb  stm32f4xx_fsmc.o [1]
+FSMC_NORSRAMInit         0x800'1dad  0x10a  Code  Gb  stm32f4xx_fsmc.o [1]
+Fram_Init                0x800'1583  0x132  Code  Gb  FRAM.o [1]
+Fram_Latch               0x800'16b5   0x1c  Code  Gb  FRAM.o [1]
+Fram_Read                0x800'1775   0x50  Code  Gb  FRAM.o [1]
+Fram_Status_Config       0x800'16d1   0x52  Code  Gb  FRAM.o [1]
+Fram_Write               0x800'1723   0x52  Code  Gb  FRAM.o [1]
+GPIO_Init                0x800'1cb1   0xa8  Code  Gb  stm32f4xx_gpio.o [1]
+GPIO_PinAFConfig         0x800'1d59   0x54  Code  Gb  stm32f4xx_gpio.o [1]
+Gulim7                  0x2000'0010    0xc  Data  Gb  Gulim7_6x10_ASCII.o [1]
+Gulim7_6x10              0x800'2530  0x500  Data  Gb  Gulim7_6x10_ASCII.o [1]
+Gulim8                  0x2000'001c    0xc  Data  Gb  Gulim8_8x12_ASCII.o [1]
+Gulim8_8x12              0x800'1f30  0x600  Data  Gb  Gulim8_8x12_ASCII.o [1]
+ILI_Clear                0x800'1c3d   0x34  Code  Gb  ILI9163B.o [1]
+ILI_Init                 0x800'19c1  0x1d2  Code  Gb  ILI9163B.o [1]
+ILI_SetDirection         0x800'1c11   0x2c  Code  Gb  ILI9163B.o [1]
+ILI_SetWindow            0x800'1bad   0x64  Code  Gb  ILI9163B.o [1]
+ILI_WRITE_END            0x800'182b    0xa  Code  Gb  ILI9163B.o [1]
+ILI_WRITE_RGB            0x800'1809   0x22  Code  Gb  ILI9163B.o [1]
+ILI_WRITE_START          0x800'17ff    0xa  Code  Gb  ILI9163B.o [1]
+ILI_WriteCmd             0x800'17f1    0x8  Code  Lc  ILI9163B.o [1]
+ILI_WriteData            0x800'17f9    0x6  Code  Lc  ILI9163B.o [1]
+JOY_Scan                 0x800'07b5   0x56  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+LCD_BkColor             0x2000'01c8    0x4  Data  Gb  GLCD.o [1]
+LCD_BrushColor          0x2000'01cc    0x4  Data  Gb  GLCD.o [1]
+LCD_Clear                0x800'151b    0x8  Code  Gb  GLCD.o [1]
+LCD_DisplayText          0x800'153d   0x2c  Code  Gb  GLCD.o [1]
+LCD_DrawChar             0x800'138b   0xa8  Code  Gb  GLCD.o [1]
+LCD_DrawFillRect         0x800'14db   0x40  Code  Gb  GLCD.o [1]
+LCD_DrawHorLine          0x800'1469   0x3a  Code  Gb  GLCD.o [1]
+LCD_DrawText             0x800'1433   0x36  Code  Gb  GLCD.o [1]
+LCD_DrawVerLine          0x800'14a3   0x38  Code  Gb  GLCD.o [1]
+LCD_GetFont              0x800'1349    0x8  Code  Gb  GLCD.o [1]
+LCD_Init                 0x800'1351   0x3a  Code  Gb  GLCD.o [1]
+LCD_PenColor            0x2000'01d4    0x4  Data  Gb  GLCD.o [1]
+LCD_SetBackColor         0x800'1321    0x8  Code  Gb  GLCD.o [1]
+LCD_SetBrushColor        0x800'1339    0x8  Code  Gb  GLCD.o [1]
+LCD_SetFont              0x800'1341    0x8  Code  Gb  GLCD.o [1]
+LCD_SetPenColor          0x800'1331    0x8  Code  Gb  GLCD.o [1]
+LCD_SetTextColor         0x800'1329    0x8  Code  Gb  GLCD.o [1]
+LCD_TextColor           0x2000'01d0    0x4  Data  Gb  GLCD.o [1]
+LCD_pFont               0x2000'01c4    0x4  Data  Gb  GLCD.o [1]
+RCC_AHB1PeriphClockCmd   0x800'1c71   0x1c  Code  Gb  stm32f4xx_rcc.o [1]
+RCC_AHB3PeriphClockCmd   0x800'1c8d   0x1c  Code  Gb  stm32f4xx_rcc.o [1]
+RedplayerW              0x2000'01b8    0x4  Data  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+Region$$Table$$Base      0x800'2c30          --   Gb  - Linker created -
+Region$$Table$$Limit     0x800'2c54          --   Gb  - Linker created -
+SPI2_Send                0x800'1569   0x1a  Code  Gb  FRAM.o [1]
+SW0_Flag                0x2000'01d8    0x1  Data  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+SW1_Flag                0x2000'01d9    0x1  Data  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+SW5_Flag                0x2000'01da    0x1  Data  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+SW6_Flag                0x2000'01db    0x1  Data  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+SW7_Flag                0x2000'01dc    0x1  Data  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+SerialPutChar            0x800'11bd   0x10  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+Serial_PutString         0x800'11dd   0x16  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+SetSysClock              0x800'2a77   0xaa  Code  Lc  system_stm32f4xx.o [1]
+SystemInit               0x800'2a31   0x46  Code  Gb  system_stm32f4xx.o [1]
+Turn                    0x2000'01c0    0x4  Data  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+UART5_IRQHandler         0x800'0d65  0x458  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+UART5_Init               0x800'0bf5   0xec  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+USART_BRR_Configuration
+                         0x800'11f3   0x6a  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+UTIL_DelayMS             0x800'1ef5   0x20  Code  Gb  Util.o [1]
+UTIL_DelayUS             0x800'1f15   0x1c  Code  Gb  Util.o [1]
+_EXTI_Init               0x800'044d   0x80  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+_GPIO_Init               0x800'04dd   0x9a  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+__cmain                  0x800'2c55         Code  Gb  cmain.o [4]
+__exit                   0x800'2c89   0x14  Code  Gb  exit.o [5]
+__iar_copy_init3         0x800'2b8f   0x2c  Code  Gb  copy_init3.o [4]
+__iar_data_init3         0x800'2bbd   0x28  Code  Gb  data_init.o [4]
+__iar_init_vfp           0x800'2c0d         Code  Gb  fpinit_M.o [3]
+__iar_program_start      0x800'2cb9         Code  Gb  cstartup_M.o [4]
+__iar_zero_init3         0x800'2b55   0x3a  Code  Gb  zero_init3.o [4]
+__low_level_init         0x800'2c73    0x4  Code  Gb  low_level_init.o [2]
+__vector_table           0x800'0000         Data  Gb  startup_stm32f40_41xxx.o [1]
+_call_main               0x800'2c61         Code  Gb  cmain.o [4]
+_exit                    0x800'2c7d         Code  Gb  cexit.o [4]
+_main                    0x800'2c6f         Code  Gb  cmain.o [4]
+count                   0x2000'01dd    0x1  Data  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+exit                     0x800'2c77    0x4  Code  Gb  exit.o [2]
+i                       0x2000'0028  0x190  Data  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+joy_flag                0x2000'01de    0x1  Data  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+joystic                  0x800'0821  0x3c8  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+main                     0x800'0189  0x2c4  Code  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+t                       0x2000'0004    0x4  Data  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+u                       0x2000'0000    0x4  Data  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+x                       0x2000'0008    0x4  Data  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+y                       0x2000'000c    0x4  Data  Gb  3_PR2_2015134010_±Ë≈¬»£.o [1]
+
+
+[1] = C:\Users\yse04\OneDrive\πŸ≈¡ »≠∏È\Micom\Debug\Obj
+[2] = dl7M_tln.a
+[3] = m7M_tls.a
+[4] = rt7M_tl.a
+[5] = shb_l.a
+
+  8 906 bytes of readonly  code memory
+  2 914 bytes of readonly  data memory
+  1 503 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
